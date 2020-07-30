@@ -26,11 +26,16 @@ include_once "base.php";
 		<div id="left" class="ct">
 			<div style="min-height:400px;">
 				<a href="?do=admin">管理權限設置</a>
-				<a href="?do=th">商品分類與管理</a>
-				<a href="?do=order">訂單管理</a>
-				<a href="?do=mem">會員管理</a>
-				<a href="?do=bot">頁尾版權管理</a>
-				<a href="?do=news">最新消息管理</a>
+
+				<?php
+				$manager = $Admin->find(['acc'=>$_SESSION['admin']]);
+				$pr = unserialize($manager['pr']);
+				?>
+				<a style="display:<?= in_array(1,$pr)? "block" : "none"; ?>" href="?do=th">商品分類與管理</a>
+				<a style="display:<?= in_array(2,$pr)? "block" : "none"; ?>" href="?do=order">訂單管理</a>
+				<a style="display:<?= in_array(3,$pr)? "block" : "none"; ?>" href="?do=mem">會員管理</a>
+				<a style="display:<?= in_array(4,$pr)? "block" : "none"; ?>" href="?do=bot">頁尾版權管理</a>
+				<a style="display:<?= in_array(5,$pr)? "block" : "none"; ?>" href="?do=news">最新消息管理</a>
 				<a href="javascript:location.href=&#39;api/logout.php?logout=admin&#39;"  style="color:#f00;">登出</a>
 			</div>
 		</div>
