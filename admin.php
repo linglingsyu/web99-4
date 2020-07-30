@@ -31,7 +31,7 @@ include_once "base.php";
 				<a href="?do=mem">會員管理</a>
 				<a href="?do=bot">頁尾版權管理</a>
 				<a href="?do=news">最新消息管理</a>
-				<a href="?do=logout" style="color:#f00;">登出</a>
+				<a href="javascript:location.href=&#39;api/logout.php?logout=admin&#39;"  style="color:#f00;">登出</a>
 			</div>
 		</div>
 		<div id="right">

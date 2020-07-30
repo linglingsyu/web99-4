@@ -67,8 +67,9 @@ public function save($arg){
     }
     $sql = "update $this->table set " . implode(" , ",$tmp) . " where `id`=" . $arg['id'];
   }else{
-    $sql = "insert into `$this->table` (`".implode(" `,` ",array_keys($arg))."`) values ('". implode("','",$arg)."')";
+    $sql = "insert into `$this->table` (`".implode("`,`",array_keys($arg))."`) values ('". implode("','",$arg)."')";
   }
+  echo $sql;
   return $this->pdo->exec($sql);
 }
 
