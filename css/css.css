@@ -65,7 +65,7 @@ body
 }
 .all td
 {
-	min-width:100px;
+	min-width:86px;
 	padding:10px;
 }
 .tt
@@ -102,6 +102,7 @@ input[type=text],input[type=password]
 {
 	display:none;
 }
+
 div.ww:hover > div.s
 {
 	display:block;
