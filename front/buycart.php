@@ -12,14 +12,16 @@
 if(!empty($_GET['id'])){
   //記錄我要購買的商品數量
    $_SESSION['cart'][$_GET['id']] = $_GET['qt'] ;
-}else{
+}else if(!isset($_SESSION['cart']) || empty($_SESSION['cart'])){ //判斷是否為空的購物車
   echo '<h2 class="ct">請先選擇商品</h2>';
+  exit();
 }
 //先判斷有無登入
 if(empty($_SESSION['member'])){
   to("?do=login");
 }
 echo   '<h2 class="ct">'.$_SESSION['member'].'</h2>';
+
 foreach($_SESSION['cart'] as $id => $qt){
   $goods = $Goods->find($id);
 ?>
@@ -39,8 +41,8 @@ foreach($_SESSION['cart'] as $id => $qt){
 </table>
 <div class="ct">
 
-<a href=""><img src="icon/0411.jpg" alt="繼續選購"></a>
-<a href=""><img src="icon/0412.jpg" alt="結帳"></a>
+<a href="index.php"><img src="icon/0411.jpg" alt="繼續選購"></a>
+<a href="?do=check"><img src="icon/0412.jpg" alt="結帳"></a>
 
 
 </div>
@@ -48,7 +50,9 @@ foreach($_SESSION['cart'] as $id => $qt){
 <script>
 function delcart(id){
   $.post("api/del_cart.php",{id},function(){
-    location.reload();
+       //location.reload();
+     // 會用原網址重新傳，導致最後一個刪除失敗，所以改用localtion.href
+      location.href="?do=buycart";
   })
   
   }
