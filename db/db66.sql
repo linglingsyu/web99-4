@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-07-31 10:31:41
+-- 產生時間： 2020-08-07 05:48:29
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.6
 
@@ -132,12 +132,19 @@ CREATE TABLE `ord` (
   `total` int(10) UNSIGNED NOT NULL,
   `acc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ord_time` date NOT NULL,
+  `ord_time` date NOT NULL DEFAULT current_timestamp(),
   `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `addr` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `tel` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `goods` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `ord`
+--
+
+INSERT INTO `ord` (`id`, `no`, `total`, `acc`, `name`, `ord_time`, `email`, `addr`, `tel`, `goods`) VALUES
+(6, '20200807247316', 29200, 'test', 'test', '2020-08-07', 'aa@hotmail.com', 'hello', '44555', 'a:2:{i:3;s:1:\"1\";i:9;s:1:\"1\";}');
 
 -- --------------------------------------------------------
 
@@ -240,7 +247,7 @@ ALTER TABLE `member`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `ord`
 --
 ALTER TABLE `ord`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `type`
