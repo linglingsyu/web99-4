@@ -61,12 +61,16 @@ $mem= $Member->find(['acc'=>$_SESSION['member']]);
 
 <script>
   function buy(){
-    let data = {
-      'name':$("#name").val(),
-      'email':$("#email").val(),
-      'tel':$("#tel").val(),
-      'addr':$("#addr").val()
-    };
+    // let data = {
+    //   'name':$("#name").val(),
+    //   'email':$("#email").val(),
+    //   'tel':$("#tel").val(),
+    //   'addr':$("#addr").val()
+    // };
+
+    //上面可以改成(要確認頁面沒有其他的input標籤)
+    let data = $("input").serialize();
+
     $.post("api/buy.php",data,function(res){
         alert("訂購成功\n感謝您的選購");
         location.href="index.php";
